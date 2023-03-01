@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,24 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'index']);
 
-Route::get('/home', function () {
+Route::get('/home', [FrontController::class, 'home']);
 
-    $loggedIn = "Mohamed";
+Route::get('/blog',  [FrontController::class, 'blog']);
 
-    return view('home', [
-        'name' => 'new Name',
-        'loggedIn' => $loggedIn
-    ]);
-});
-
-Route::get('/blog', function () {
-    return view('blog');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', [FrontController::class, 'contact']);
