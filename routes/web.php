@@ -18,10 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+
+    $loggedIn = "Mohamed";
+
+    return view('home', [
+        'name' => 'new Name',
+        'loggedIn' => $loggedIn
+    ]);
 });
 
 Route::get('/contact', function () {
     return view('contact');
 });
-
