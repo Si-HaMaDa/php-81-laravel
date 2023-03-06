@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -29,5 +30,31 @@ class FrontController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    public function db_test()
+    {
+        // SELECT * FROM flights
+
+        // $flight = DB::table('flights')->find(5);
+
+        // $flights = DB::table('flights')->get();
+
+        // $flights = DB::table('flights')->pluck('name', 'id');
+
+        $flights = DB::table('flights')
+            ->orderBy('id', 'desc')
+            ->select('name', 'id', 'color', 'number')
+            ->paginate(3);
+
+        // ->get();
+        // ->where('id', '>', '5')
+
+        // dd(
+        //     $flights,
+        //     'DB test'
+        // );
+
+        return view('flights', ['flights' => $flights]);
     }
 }

@@ -22,6 +22,8 @@ Route::get('/blog',  [FrontController::class, 'blog']);
 
 Route::get('/contact', [FrontController::class, 'contact']);
 
+Route::get('/db-test', [FrontController::class, 'db_test']);
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

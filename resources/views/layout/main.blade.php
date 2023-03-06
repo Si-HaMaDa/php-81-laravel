@@ -30,6 +30,7 @@
                     <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact" aria-current="page">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="db-test" aria-current="page">DB test</a></li>
                 </ul>
             </div>
         </div>
