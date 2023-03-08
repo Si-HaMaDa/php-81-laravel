@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,5 @@ Route::get('/db-test', [FrontController::class, 'db_test'])->middleware('auth', 
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('admin', [AdminController::class, 'index'])->middleware('auth');

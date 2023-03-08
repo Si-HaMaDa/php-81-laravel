@@ -34,6 +34,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url('db-test') }}" aria-current="page">DB test</a>
                     </li>
                     @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ url('admin') }}" aria-current="page">Admin</a>
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
