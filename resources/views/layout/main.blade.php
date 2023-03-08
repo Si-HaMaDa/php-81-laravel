@@ -27,10 +27,26 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact" aria-current="page">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="db-test" aria-current="page">DB test</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('blog') }}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('contact') }}" aria-current="page">Contact</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('db-test') }}" aria-current="page">DB test</a>
+                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <input class="nav-link btn btn-outline-danger" type="submit" value="Logout">
+                            </form>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}" aria-current="page">Login</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}"
+                                aria-current="page">Register</a></li>
+                    @endguest
                 </ul>
             </div>
         </div>
