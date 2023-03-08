@@ -22,7 +22,7 @@ Route::get('/blog',  [FrontController::class, 'blog']);
 
 Route::get('/contact', [FrontController::class, 'contact']);
 
-Route::get('/db-test', [FrontController::class, 'db_test']);
+Route::get('/db-test', [FrontController::class, 'db_test'])->middleware('auth', 'isAdmin');
 
 Auth::routes();
 
