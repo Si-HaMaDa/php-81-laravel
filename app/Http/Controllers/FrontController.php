@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,11 +43,6 @@ class FrontController extends Controller
 
         // $flights = DB::table('flights')->pluck('name', 'id');
 
-        $flights = DB::table('flights')
-            ->orderBy('id', 'desc')
-            ->select('name', 'id', 'color', 'number')
-            ->paginate(3);
-
         // ->get();
         // ->where('id', '>', '5')
 
@@ -54,6 +50,10 @@ class FrontController extends Controller
         //     $flights,
         //     'DB test'
         // );
+
+        // $flights = DB::table('flights')->orderBy('id', 'desc')->select('name', 'id', 'color', 'number')->paginate(3);
+
+        $flights = Flight::orderBy('id', 'desc')->select('name', 'id', 'color', 'number')->paginate(3);
 
         return view('flights', ['flights' => $flights]);
     }
