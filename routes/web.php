@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,5 @@ Auth::routes();
 
 
 Route::get('admin', [AdminController::class, 'index'])->middleware('auth');
+
+Route::get('admin/users', [UserController::class, 'index'])->middleware('auth');

@@ -105,6 +105,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('admin') }}">Admin</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('admin/users') }}">Users</a>
+                        </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" aria-label="Search" placeholder="Search">
