@@ -7,6 +7,7 @@
     <div class="container">
 
         <form class="row g-3" method="POST" action="{{ route('admin.users.store') }}">
+            @csrf
 
             <div class="col-md-6">
                 <label class="form-label" for="inputName4">Name</label>
