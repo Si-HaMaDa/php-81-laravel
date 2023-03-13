@@ -4,7 +4,13 @@
 
 @section('content')
     <div class="container">
-        <h3 class="mt-5">Users List</h3>
+        <div>
+            <a class="btn btn-primary float-end" href="{{ route('admin.users.create') }}">
+                Add user
+            </a>
+
+            <h3 class="mt-5">Users List</h3>
+        </div>
 
         <table class="table table-bordered" border="1">
             <thead>

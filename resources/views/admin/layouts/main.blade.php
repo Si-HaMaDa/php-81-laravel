@@ -103,10 +103,10 @@
                             <a class="nav-link active" href="{{ url('home') }}" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin') }}">Admin</a>
+                            <a class="nav-link" href="{{ route('admin') }}">Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin/users') }}">Users</a>
+                            <a class="nav-link" href="{{ route('admin.users') }}">Users</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">

@@ -29,6 +29,15 @@ Route::get('/db-test', [FrontController::class, 'db_test'])->middleware('auth', 
 Auth::routes();
 
 
-Route::get('admin', [AdminController::class, 'index'])->middleware('auth');
 
-Route::get('admin/users', [UserController::class, 'index'])->middleware('auth');
+// Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
+// });
+Route::group([
+    'middleware' => ['auth', 'isAdmin'],
+    'prefix' => 'admin',
+    'as' => 'admin'
+], function () {
+    Route::get('/', [AdminController::class, 'index']);
+
+    Route::get('users', [UserController::class, 'index'])->name('.users');
+});
