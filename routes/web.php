@@ -40,4 +40,6 @@ Route::group([
     Route::get('/', [AdminController::class, 'index']);
 
     Route::get('users', [UserController::class, 'index'])->name('.users');
+
+    Route::get('users/create', [UserController::class, 'create'])->name('.users.create');
 });
