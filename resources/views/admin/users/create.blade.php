@@ -11,12 +11,16 @@
 
             <div class="col-md-6">
                 <label class="form-label" for="inputName4">Name</label>
-                <input class="form-control" id="inputName4" name="name" type="text">
+                <input class="form-control @error('name') is-invalid @enderror" id="inputName4" name="name" type="text"
+                    value="{{ old('name') }}">
+                @error('name')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="col-md-6">
                 <label class="form-label" for="inputEmail4">Email</label>
-                <input class="form-control" id="inputEmail4" name="email" type="email">
+                <input class="form-control" id="inputEmail4" name="email" type="email" value="{{ old('email') }}">
             </div>
 
             <div class="col-md-6">
@@ -32,9 +36,9 @@
             <div class="col-md-4">
                 <label class="form-label" for="inputAdmin">User Type</label>
                 <select class="form-select" id="inputAdmin" name="is_admin">
-                    <option selected>Choose...</option>
-                    <option value="0">User</option>
-                    <option value="1">Admin</option>
+                    <option value="">Choose...</option>
+                    <option value="0" @selected(old('is_admin') === '0')>User</option>
+                    <option value="1" @selected(old('is_admin') === '1')>Admin</option>
                 </select>
             </div>
 

@@ -31,7 +31,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd('Store');
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'email' => ['required', 'email'],
+            'password' => ['required', 'confirmed'],
+            'is_admin' => 'required|boolean'
+        ]);
+
+        // Save User to database
+
+        dd('Store', $request->input(), $request->path());
     }
 
     /**
