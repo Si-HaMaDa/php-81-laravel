@@ -128,6 +128,22 @@
     <!-- Begin page content -->
     <main class="flex-shrink-0">
 
+        @if (session()->has('success'))
+            <div class="container" style="margin-bottom: -115px">
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            </div>
+        @endif
+
+        @if (session()->has('danger'))
+            <div class="container" style="margin-bottom: -115px">
+                <div class="alert alert-danger">
+                    {{ session()->get('danger') }}
+                </div>
+            </div>
+        @endif
+
         @if ($errors->any())
             <div class="container" style="margin-bottom: -115px">
                 <div class="alert alert-danger">

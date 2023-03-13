@@ -33,14 +33,22 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed'],
             'is_admin' => 'required|boolean'
         ]);
 
-        // Save User to database
+        $user = new User();
 
-        dd('Store', $request->input(), $request->path());
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = \Hash::make($validated['password']);
+        $user->is_admin = $validated['is_admin'];
+
+        $user->save();
+
+        $request->session()->flash('success', __('site.user_added'));
+        return to_route('admin.users');
     }
 
     /**

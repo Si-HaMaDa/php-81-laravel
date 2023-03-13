@@ -8,4 +8,5 @@ return [
     'show' => 'Show',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'user_added' => 'User Saved successfully!',
 ];
