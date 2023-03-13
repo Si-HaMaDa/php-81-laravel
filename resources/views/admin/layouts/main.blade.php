@@ -100,15 +100,15 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}" aria-current="page">Home</a>
+                            <a class="nav-link" href="{{ url('home') }}" aria-current="page">{{ __('site.home') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin') ? 'active' : '' }}"
-                                href="{{ route('admin') }}">Admin</a>
+                                href="{{ route('admin') }}">@lang('site.admin')</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}"
-                                href="{{ route('admin.users') }}">Users</a>
+                                href="{{ route('admin.users') }}">@lang('site.users')</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">

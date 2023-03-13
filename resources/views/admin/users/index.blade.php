@@ -6,10 +6,10 @@
     <div class="container">
         <div>
             <a class="btn btn-primary float-end" href="{{ route('admin.users.create') }}">
-                Add user
+                @lang('site.add_user')
             </a>
 
-            <h3 class="mt-5">Users List</h3>
+            <h3 class="mt-5">@lang('site.users')</h3>
         </div>
 
         <table class="table table-bordered" border="1">
@@ -28,9 +28,9 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <a class="btn btn-primary" href="#">Show</a>
-                            <a class="btn btn-warning" href="#">Edit</a>
-                            <a class="btn btn-danger" href="#">Delete</a>
+                            <a class="btn btn-primary" href="#">@lang('site.show')</a>
+                            <a class="btn btn-warning" href="#">@lang('site.edit')</a>
+                            <a class="btn btn-danger" href="#">@lang('site.delete')</a>
                         </td>
                     </tr>
                 @endforeach
