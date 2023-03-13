@@ -100,13 +100,15 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ url('home') }}" aria-current="page">Home</a>
+                            <a class="nav-link" href="{{ url('home') }}" aria-current="page">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin') }}">Admin</a>
+                            <a class="nav-link {{ request()->routeIs('admin') ? 'active' : '' }}"
+                                href="{{ route('admin') }}">Admin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.users') }}">Users</a>
+                            <a class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}"
+                                href="{{ route('admin.users') }}">Users</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -127,7 +129,7 @@
     <main class="flex-shrink-0">
 
         @if ($errors->any())
-            <div class="container">
+            <div class="container" style="margin-bottom: -115px">
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -138,7 +140,9 @@
             </div>
         @endif
 
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </main>
 
     <footer class="footer mt-auto py-3 bg-light">
