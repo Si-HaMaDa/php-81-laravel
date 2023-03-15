@@ -86,6 +86,10 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        request()->session()->flash('success', "Tag Deleted Successfully!");
+
+        return to_route('admin.tags.index');
     }
 }
