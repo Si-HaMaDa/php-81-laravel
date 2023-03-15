@@ -6,7 +6,13 @@
 
     <div class="card my-5">
         <div class="card-body">
-            <h5 class="card-title">Add User</h5>
+            <div>
+                <a class="btn btn-primary float-end" href="{{ route('admin.users') }}">
+                    @lang('site.back')
+                </a>
+
+                <h5 class="card-title">Add User</h5>
+            </div>
             <hr>
 
             <form class="row g-3" method="POST" action="{{ route('admin.users.store') }}">

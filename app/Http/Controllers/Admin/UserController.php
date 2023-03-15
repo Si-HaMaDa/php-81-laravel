@@ -56,7 +56,16 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            request()->session()->flash('danger', __('site.not_exist'));
+            return to_route('admin.users');
+        }
+
+        return view('admin.users.show', [
+            'user' => $user
+        ]);
     }
 
     /**
