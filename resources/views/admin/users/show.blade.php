@@ -7,7 +7,7 @@
     <div class="card my-5">
         <div class="card-body">
             <div>
-                <a class="btn btn-primary float-end" href="{{ route('admin.users') }}">
+                <a class="btn btn-primary float-end" href="{{ route('admin.users.index') }}">
                     @lang('site.back')
                 </a>
 

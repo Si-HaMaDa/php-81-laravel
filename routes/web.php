@@ -39,17 +39,20 @@ Route::group([
 ], function () {
     Route::get('/', [AdminController::class, 'index']);
 
-    Route::get('users', [UserController::class, 'index'])->name('.users');
+    // Route::get('users', [UserController::class, 'index'])->name('.users');
 
-    Route::get('users/create', [UserController::class, 'create'])->name('.users.create');
+    // Route::get('users/create', [UserController::class, 'create'])->name('.users.create');
 
-    Route::post('users', [UserController::class, 'store'])->name('.users.store');
+    // Route::post('users', [UserController::class, 'store'])->name('.users.store');
 
-    Route::get('users/{id}', [UserController::class, 'show'])->name('.users.show');
+    // Route::get('users/{id}', [UserController::class, 'show'])->name('.users.show');
 
-    Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('.users.edit');
+    // Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('.users.edit');
 
-    Route::patch('users/{id}', [UserController::class, 'update'])->name('.users.update');
+    // Route::patch('users/{id}', [UserController::class, 'update'])->name('.users.update');
 
-    Route::delete('users/{id}', [UserController::class, 'destroy'])->name('.users.destroy');
+    // Route::delete('users/{id}', [UserController::class, 'destroy'])->name('.users.destroy');
+
 });
+
+Route::middleware(['auth', 'isAdmin'])->resource('admin/users', UserController::class)->names('admin.users');

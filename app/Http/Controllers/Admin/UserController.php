@@ -48,7 +48,7 @@ class UserController extends Controller
         $user->save();
 
         $request->session()->flash('success', __('site.user_added'));
-        return to_route('admin.users');
+        return to_route('admin.users.index');
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
 
         if (!$user) {
             request()->session()->flash('danger', __('site.not_exist'));
-            return to_route('admin.users');
+            return to_route('admin.users.index');
         }
 
         return view('admin.users.show', [
@@ -77,7 +77,7 @@ class UserController extends Controller
 
         if (!$user) {
             request()->session()->flash('danger', __('site.not_exist'));
-            return to_route('admin.users');
+            return to_route('admin.users.index');
         }
 
         return view('admin.users.edit', [
@@ -94,7 +94,7 @@ class UserController extends Controller
 
         if (!$user) {
             request()->session()->flash('danger', __('site.not_exist'));
-            return to_route('admin.users');
+            return to_route('admin.users.index');
         }
 
         $validated = $request->validate([
@@ -115,7 +115,7 @@ class UserController extends Controller
         $user->save();
 
         $request->session()->flash('success', __('site.user_updated'));
-        return to_route('admin.users');
+        return to_route('admin.users.index');
     }
 
     /**
@@ -127,12 +127,12 @@ class UserController extends Controller
 
         if (!$user) {
             request()->session()->flash('danger', __('site.not_exist'));
-            return to_route('admin.users');
+            return to_route('admin.users.index');
         }
 
         $user->delete();
 
         request()->session()->flash('success', __('site.user_deleted'));
-        return to_route('admin.users');
+        return to_route('admin.users.index');
     }
 }

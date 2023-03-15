@@ -108,7 +108,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.users*') ? 'active' : '' }}"
-                                href="{{ route('admin.users') }}">@lang('site.users')</a>
+                                href="{{ route('admin.users.index') }}">@lang('site.users')</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
