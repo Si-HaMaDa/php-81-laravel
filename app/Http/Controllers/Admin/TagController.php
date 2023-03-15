@@ -64,7 +64,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', [
+            'tag' => $tag
+        ]);
     }
 
     /**
@@ -72,7 +74,11 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $tag->name = $request['name'];
+        $tag->save();
+
+        $request->session()->flash('success', "Tag Updated Successfully!");
+        return to_route('admin.tags.index');
     }
 
     /**
