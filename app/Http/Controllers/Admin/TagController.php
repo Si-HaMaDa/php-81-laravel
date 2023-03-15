@@ -32,11 +32,11 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        $user = new Tag();
+        $tag = new Tag();
 
-        $user->name = $request['name'];
+        $tag->name = $request['name'];
 
-        $user->save();
+        $tag->save();
 
         $request->session()->flash('success', "Tag Added Successfully!");
         return to_route('admin.tags.index');
@@ -45,9 +45,18 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tag $tag)
+    public function show(string $id)
     {
-        //
+        $tag = Tag::find($id);
+
+        if (!$tag) {
+            request()->session()->flash('danger', __('site.not_exist'));
+            return to_route('admin.tags.index');
+        }
+
+        return view('admin.tags.show', [
+            'tag' => $tag
+        ]);
     }
 
     /**
