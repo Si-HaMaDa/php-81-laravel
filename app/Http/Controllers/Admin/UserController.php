@@ -123,6 +123,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            request()->session()->flash('danger', __('site.not_exist'));
+            return to_route('admin.users');
+        }
+
+        $user->delete();
+
+        request()->session()->flash('success', __('site.user_deleted'));
+        return to_route('admin.users');
     }
 }

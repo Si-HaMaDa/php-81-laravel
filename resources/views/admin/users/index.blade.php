@@ -30,7 +30,11 @@
                         <td>
                             <a class="btn btn-primary" href="{{ route('admin.users.show', $user->id) }}">@lang('site.show')</a>
                             <a class="btn btn-warning" href="{{ route('admin.users.edit', $user->id) }}">@lang('site.edit')</a>
-                            <a class="btn btn-danger" href="#">@lang('site.delete')</a>
+                            <form class="d-inline" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">@lang('site.delete')</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
