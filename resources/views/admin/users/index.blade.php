@@ -28,9 +28,8 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <a class="btn btn-primary"
-                                href="{{ route('admin.users.show', $user->id) }}">@lang('site.show')</a>
-                            <a class="btn btn-warning" href="#">@lang('site.edit')</a>
+                            <a class="btn btn-primary" href="{{ route('admin.users.show', $user->id) }}">@lang('site.show')</a>
+                            <a class="btn btn-warning" href="{{ route('admin.users.edit', $user->id) }}">@lang('site.edit')</a>
                             <a class="btn btn-danger" href="#">@lang('site.delete')</a>
                         </td>
                     </tr>

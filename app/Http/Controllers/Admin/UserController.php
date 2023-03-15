@@ -32,7 +32,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|alpha',
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed'],
             'is_admin' => 'required|boolean'
@@ -73,7 +73,16 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            request()->session()->flash('danger', __('site.not_exist'));
+            return to_route('admin.users');
+        }
+
+        return view('admin.users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -81,7 +90,32 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            request()->session()->flash('danger', __('site.not_exist'));
+            return to_route('admin.users');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|alpha',
+            'email' => ['required', 'email', "unique:users,email,$id"],
+            'password' => ['sometimes', 'confirmed'],
+            'is_admin' => 'required|boolean'
+        ]);
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->is_admin = $validated['is_admin'];
+
+        if ($validated['password']) {
+            $user->password = \Hash::make($validated['password']);
+        }
+
+        $user->save();
+
+        $request->session()->flash('success', __('site.user_updated'));
+        return to_route('admin.users');
     }
 
     /**
