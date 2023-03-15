@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +36,8 @@ Auth::routes();
 Route::group([
     'middleware' => ['auth', 'isAdmin'],
     'prefix' => 'admin',
-    'as' => 'admin'
 ], function () {
-    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
 
     // Route::get('users', [UserController::class, 'index'])->name('.users');
 
@@ -53,6 +53,7 @@ Route::group([
 
     // Route::delete('users/{id}', [UserController::class, 'destroy'])->name('.users.destroy');
 
-});
+    Route::resource('users', UserController::class)->names('admin.users');
 
-Route::middleware(['auth', 'isAdmin'])->resource('admin/users', UserController::class)->names('admin.users');
+    Route::resource('tags', TagController::class)->names('admin.tags');
+});
