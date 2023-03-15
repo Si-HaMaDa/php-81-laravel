@@ -15,7 +15,8 @@
             </div>
             <hr>
 
-            <form class="row g-3" method="POST" action="{{ route('admin.users.update', $user->id) }}">
+            <form class="row g-3" method="POST"
+                action="{{ route('admin.users.update', $user->id) }}"enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -45,13 +46,21 @@
                         type="password">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label" for="inputAdmin">User Type </label>
                     <select class="form-select" id="inputAdmin" name="is_admin">
                         <option value="">Choose...</option>
                         <option value="0" @selected(old('is_admin', $user->is_admin) === 0)>User</option>
                         <option value="1" @selected(old('is_admin', $user->is_admin) === 1)>Admin</option>
                     </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="image">Image</label>
+                    <input class="form-control" id="image" name="image" type="file">
+                    @if ($user->image)
+                        <img src="{{ url('storage/' . $user->image) }}" alt="{{ $user->name }}" width="150">
+                    @endif
                 </div>
 
                 <div class="col-12">

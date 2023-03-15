@@ -15,7 +15,7 @@
             </div>
             <hr>
 
-            <form class="row g-3" method="POST" action="{{ route('admin.users.store') }}">
+            <form class="row g-3" method="POST" action="{{ route('admin.users.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="col-md-6">
@@ -43,13 +43,18 @@
                         type="password">
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label" for="inputAdmin">User Type</label>
                     <select class="form-select" id="inputAdmin" name="is_admin">
                         <option value="">Choose...</option>
                         <option value="0" @selected(old('is_admin') === '0')>User</option>
                         <option value="1" @selected(old('is_admin') === '1')>Admin</option>
                     </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label" for="image">Image</label>
+                    <input class="form-control" id="image" name="image" type="file">
                 </div>
 
                 <div class="col-12">

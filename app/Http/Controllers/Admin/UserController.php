@@ -35,7 +35,8 @@ class UserController extends Controller
             'name' => 'required|alpha',
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed'],
-            'is_admin' => 'required|boolean'
+            'is_admin' => 'required|boolean',
+            'image' => 'nullable|image'
         ]);
 
         $user = new User();
@@ -44,6 +45,12 @@ class UserController extends Controller
         $user->email = $validated['email'];
         $user->password = \Hash::make($validated['password']);
         $user->is_admin = $validated['is_admin'];
+
+        if ($validated['image']) {
+            $path = $request->file('image')->store('users/images');
+
+            $user->image = $path;
+        }
 
         $user->save();
 
@@ -101,7 +108,8 @@ class UserController extends Controller
             'name' => 'required|alpha',
             'email' => ['required', 'email', "unique:users,email,$id"],
             'password' => ['sometimes', 'confirmed'],
-            'is_admin' => 'required|boolean'
+            'is_admin' => 'required|boolean',
+            'image' => 'nullable|image'
         ]);
 
         $user->name = $validated['name'];
@@ -110,6 +118,14 @@ class UserController extends Controller
 
         if ($validated['password']) {
             $user->password = \Hash::make($validated['password']);
+        }
+
+        if ($validated['image']) {
+            \Storage::delete([$user->image]);
+
+            $path = $request->file('image')->store('users/images');
+
+            $user->image = $path;
         }
 
         $user->save();

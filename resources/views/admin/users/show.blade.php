@@ -40,6 +40,10 @@
                 <p>{{ $user->created_at }}</p>
             </div>
 
+            <div class="col-md-4">
+                <img src="{{ url('storage/' . $user->image) }}" alt="{{ $user->name }}" width="500">
+            </div>
+
 
         </div>
     </div>
